@@ -1,0 +1,35 @@
+{
+  "name": "termo-crente-backend",
+  "version": "1.0.0",
+  "description": "Versão bíblica do famoso jogo Termo.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./tests --exit",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatanaelNeto/termo-crente-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NatanaelNeto/termo-crente-backend/issues"
+  },
+  "homepage": "https://github.com/NatanaelNeto/termo-crente-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-rescue": "^1.1.31",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0"
+  }
+}
