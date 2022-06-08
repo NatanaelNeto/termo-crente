@@ -4,7 +4,7 @@
   "description": "Versão bíblica do famoso jogo Termo.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tests --exit",
     "start": "nodemon index.js"
   },
   "repository": {
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "mocha": "^10.0.0",
     "sinon": "^14.0.0"
   }
