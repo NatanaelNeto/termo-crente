@@ -7,6 +7,13 @@ Versão bíblica do famoso jogo Termo.
 
  - Como Termo é basicamente um jogo de palavras, deve haver uma rota que retorne todas as palavras cadastradas na base de dados.
 
+### Rota `POST /login` para acessar o sistema
+
+ - Para que os administradores acessem o sistema, será preciso realizar o login dos mesmos, retornando um token de acesso.
+ - Deve ser verificado que:
+   - O login só pode ser feito com uma conta válida
+   - O login retorna um token de acesso
+
 ### Rota `POST /admin` para cadastrar um administrador
 
  - Para poder realizar manutenções no banco de dados, será preciso cadastrar administradores. Eles poderão adicionar e remover palavras, bem como adicionar outras pessoas também.
@@ -18,14 +25,8 @@ Versão bíblica do famoso jogo Termo.
    - O campo `name` possui até 20 caracteres;
    - O campo `password` possui até 20 caracteres;
    - O campo `password` possui, pelo menos, um número;
-   - Não é possível cadastrar sem os campos de `name` nem `password`
-
-### Rota `POST /login` para acessar o sistema
-
- - Para que os administradores acessem o sistema, será preciso realizar o login dos mesmos, retornando um token de acesso.
- - Deve ser verificado que:
-   - O login só pode ser feito com uma conta válida
-   - O login retorna um token de acesso
+   - Não é possível cadastrar sem os campos de `name` nem `password`;
+   - Não é possível cadastrar sem um token válido;
 
 ### Rota `POST /words` para cadastrar novas palavras
 
