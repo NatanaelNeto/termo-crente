@@ -7,7 +7,7 @@ const addAdmin = async (nome, senha) => {
 
 const getAdmin = async (nome, senha) => {
   const admin = await connection.execute('SELECT * FROM admins WHERE `name` = ? AND `password` = ?', [nome, senha]);
-  return admin || null;
+  return admin[0][0];
 };
 
 module.exports = {

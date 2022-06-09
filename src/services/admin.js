@@ -1,13 +1,19 @@
 const { BAD_REQUEST, NOT_FOUND } = require('../../utils/statusCode');
 const model = require('../models/admin');
 
-const passwordRegEx = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/gm
+const passwordRegEx = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/
 
 const login = async (nome, senha) => {
-  if (nome.length < 5 || !passwordRegEx.test(senha)) return {
+  if (nome.length < 5) return {
     error: BAD_REQUEST,
     message: 'Some fields are invalid',
-  };
+  }
+
+  if (!passwordRegEx.test(senha)) return {
+    error: BAD_REQUEST,
+    message: 'Some fields are invalid',
+  }
+
 
   const result = await model.getAdmin(nome, senha);
   if (!result) return {
