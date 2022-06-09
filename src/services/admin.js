@@ -19,3 +19,7 @@ const login = async (nome, senha) => {
 
   return { id, name };
 };
+
+module.exports = {
+  login,
+};
