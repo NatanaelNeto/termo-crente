@@ -3,11 +3,11 @@ Versão bíblica do famoso jogo Termo.
 
 ## Checkpoints do Projeto 🚀
 
-### Rota `GET /words` para resgatar todas as palavras
+### Rota `GET /words` para resgatar todas as palavras - 🆗
 
  - Como Termo é basicamente um jogo de palavras, deve haver uma rota que retorne todas as palavras cadastradas na base de dados.
 
-### Rota `POST /login` para acessar o sistema
+### Rota `POST /login` para acessar o sistema - 🆗
 
  - Para que os administradores acessem o sistema, será preciso realizar o login dos mesmos, retornando um token de acesso.
  - Deve ser verificado que:
