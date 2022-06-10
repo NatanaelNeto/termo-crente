@@ -38,7 +38,9 @@ Versão bíblica do famoso jogo Termo.
    - **word** - A palavra cadastrada
  - Deve ser verificado que:
    - Só é possível cadastrar com um token válido
-   - A palavra possui 5 letras
+   - A palavra deve possuir 5 letras
+   - Não é possível cadastrar uma palavra já cadastrada
+   - O cadastro armazena corretamente no banco de dados
 
 ### Rota `DELETE /word/:word` para remover palavras
 
