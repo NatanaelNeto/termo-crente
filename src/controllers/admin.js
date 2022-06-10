@@ -4,7 +4,7 @@ const services = require('../services/admin');
 const jwt = require('jsonwebtoken');
 const rescue = require('express-rescue');
 
-const { OK } = require('../../utils/statusCode');
+const { OK, CREATED } = require('../../utils/statusCode');
 
 const secret = process.env.JWT_SECRET;
 
@@ -25,7 +25,12 @@ const login = rescue(async (req, res) => {
 });
 
 const addAdmin = rescue(async (req, res) => {
+  const { nome, senha } = req.body;
+  const data = await services.addAdmin(nome, senha);
 
+  if (data.error) return res.status(data.error).json(data);
+
+  return res.status(CREATED).json(data);
 });
 
 module.exports = {
