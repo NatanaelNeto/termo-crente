@@ -16,7 +16,13 @@ const insert = async(data) => {
   return true;
 }
 
+const remove = async(id) => {
+  const removed = await connection.execute('DELETE FROM words WHERE id = ?', [id]);
+  return true;
+};
+
 module.exports = {
   getAll,
   insert,
+  remove,
 };

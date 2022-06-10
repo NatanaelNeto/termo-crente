@@ -4,7 +4,7 @@ const sinon = require('sinon');
 
 const server = require('../src/app');
 const model = require('../src/models/words');
-const { OK, UNAUTHORIZED, BAD_REQUEST, CREATED, CONFLICT } = require('../utils/statusCode');
+const { OK, UNAUTHORIZED, BAD_REQUEST, CREATED, CONFLICT, NOT_FOUND, NO_CONTENT } = require('../utils/statusCode');
 
 chai.use(chaiHttp);
 
@@ -100,6 +100,60 @@ describe('TESTS ON words TABLE', () => {
       
       const { body } = response;
       expect(response).to.be.status(CREATED);
+    });
+  });
+
+  describe('Tests on DELETE /words route', () => {
+    let token;
+    beforeEach(async () => {
+      const response = await chai
+        .request(server)
+        .post('/login')
+        .send({ nome: 'teste', senha: 'senha_teste123' });
+      
+      const { body } = response;
+      token = body.token;
+    });
+
+    it('Refuses with an invalid token', async () => {
+      const response = await chai
+        .request(server)
+        .delete('/words')
+        .set({ authentication: 'token' })
+        .send({ palavra: 'teste' });
+      
+      const { body } = response;
+      
+      expect(response).to.be.status(UNAUTHORIZED);
+      expect(body.message).to.equal('Token must be a valid token');
+    });
+
+    it('Refuses when word doesnt exist on database', async () => {
+      const response = await chai
+        .request(server)
+        .delete('/words')
+        .set({ authentication: token })
+        .send({ palavra: 'aaaaa' });
+      
+      const { body } = response;
+
+      expect(response).to.status(NOT_FOUND);
+      expect(body.message).to.equal('This word doesnt exist on database');
+    });
+
+    before(() => sinon.stub(model, 'remove').returns(true));
+    after(() => sinon.restore());
+    it('Removes properly', async () => {
+      const response = await chai
+        .request(server)
+        .delete('/words')
+        .set({ authentication: token })
+        .send({ palavra: 'teste' });
+      
+      const { body } = response;
+
+      expect(response).to.status(NO_CONTENT);
+      expect(body.palavra).to.equal('teste');
     });
   });
 });

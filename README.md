@@ -46,7 +46,8 @@ Versão bíblica do famoso jogo Termo.
 
  - Para remover palavras, deve haver uma rota que permita a deleção.
  - Deve ser verificado que:
-   - A palavra existe na base de dados
+   - Só é possível deletar com um token válido
+   - Não é possível deletar uma palavra que não existe no banco de dados
    - Após a remoção, a palavra deixa de existir na base de dados
 
 _Porque a terra se encherá do conhecimento da glória do SENHOR, como as águas cobrem o mar._ Hc 2:14
