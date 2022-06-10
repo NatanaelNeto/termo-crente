@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const words = require('./controllers/words');
 const admin = require('./controllers/admin');
+const { tokenValidation, fieldsValidation } = require('../utils/middlewares');
 
 const app = express();
 
@@ -13,6 +14,7 @@ const apiRoutes = express.Router();
 // ROTAS
 app.get('/words', words.getAll);
 app.post('/login', admin.login);
+app.post('/admin', tokenValidation, fieldsValidation, admin.addAdmin);
 
 app.use(apiRoutes);
 

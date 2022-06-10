@@ -22,11 +22,13 @@ Versão bíblica do famoso jogo Termo.
    - **name** - O nome de login
    - **password** - A senha usada para obter acesso ao sistema
  - Deve ser verificado que:
-   - O campo `name` possui até 20 caracteres;
-   - O campo `password` possui até 20 caracteres;
-   - O campo `password` possui, pelo menos, um número;
-   - Não é possível cadastrar sem os campos de `name` nem `password`;
-   - Não é possível cadastrar sem um token válido;
+   - O campo `name` possui até 20 caracteres
+   - O campo `password` possui até 20 caracteres
+   - O campo `password` possui, pelo menos, um número
+   - Não é possível cadastrar sem os campos de `name` nem `password`
+   - Não é possível cadastrar sem um token válido
+   - Não é possível cadastrar um administrador com nome já cadastrado
+   - O cadastro armazena corretamente no banco de dados
 
 ### Rota `POST /words` para cadastrar novas palavras
 
