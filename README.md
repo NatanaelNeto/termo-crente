@@ -14,7 +14,7 @@ Versão bíblica do famoso jogo Termo.
    - O login só pode ser feito com uma conta válida
    - O login retorna um token de acesso
 
-### Rota `POST /admin` para cadastrar um administrador
+### Rota `POST /admin` para cadastrar um administrador - 🆗
 
  - Para poder realizar manutenções no banco de dados, será preciso cadastrar administradores. Eles poderão adicionar e remover palavras, bem como adicionar outras pessoas também.
  - Na base de dados, os valores armazenados são:
