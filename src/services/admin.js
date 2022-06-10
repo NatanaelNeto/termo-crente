@@ -26,6 +26,11 @@ const login = async (nome, senha) => {
   return { id, name };
 };
 
+const addAdmin = async (nome, senha) => {
+  if (nome.length >20)
+};
+
 module.exports = {
   login,
+  addAdmin,
 };

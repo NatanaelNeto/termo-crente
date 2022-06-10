@@ -24,6 +24,11 @@ const login = rescue(async (req, res) => {
   return res.status(OK).json({ status: OK, token });
 });
 
+const addAdmin = rescue(async (req, res) => {
+
+});
+
 module.exports = {
   login,
+  addAdmin,
 };
