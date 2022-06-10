@@ -1,5 +1,5 @@
 const rescue = require('express-rescue');
-const { CREATED } = require('../../utils/statusCode');
+const { CREATED, NO_CONTENT } = require('../../utils/statusCode');
 const services = require('../services/words');
 
 const getAll = rescue(async (_req, res) => {
@@ -14,7 +14,15 @@ const insert = rescue(async (req, res) => {
   return res.status(CREATED).json(data);
 });
 
+const remove = rescue(async (req, res) => {
+  const { word } = req.params;
+  const data = await services.remove(word);
+  if (data.error) return res.status(data.error).json(data);
+  return res.status(NO_CONTENT).json(data);
+});
+
 module.exports = {
   getAll,
   insert,
+  remove,
 };

@@ -1,5 +1,5 @@
-# termo-crente
-Versão bíblica do famoso jogo Termo.
+# spelGo
+Versão bíblica do famoso jogo Termo. Repositório do servidor back-end. Documentação [aqui](src/docs.md).
 
 ## Checkpoints do Projeto 🚀
 
@@ -30,7 +30,7 @@ Versão bíblica do famoso jogo Termo.
    - Não é possível cadastrar um administrador com nome já cadastrado
    - O cadastro armazena corretamente no banco de dados
 
-### Rota `POST /words` para cadastrar novas palavras
+### Rota `POST /words` para cadastrar novas palavras - 🆗
 
  - Para inserir de forma dinâmica as palavras na base de dados, deve haver uma rota que permita a inserção.
  - Na base de dados, os valores armazenados são:
@@ -42,11 +42,12 @@ Versão bíblica do famoso jogo Termo.
    - Não é possível cadastrar uma palavra já cadastrada
    - O cadastro armazena corretamente no banco de dados
 
-### Rota `DELETE /word/:word` para remover palavras
+### Rota `DELETE /word/:word` para remover palavras - 🆗
 
  - Para remover palavras, deve haver uma rota que permita a deleção.
  - Deve ser verificado que:
-   - A palavra existe na base de dados
+   - Só é possível deletar com um token válido
+   - Não é possível deletar uma palavra que não existe no banco de dados
    - Após a remoção, a palavra deixa de existir na base de dados
 
 _Porque a terra se encherá do conhecimento da glória do SENHOR, como as águas cobrem o mar._ Hc 2:14
