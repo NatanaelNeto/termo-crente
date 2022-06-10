@@ -31,21 +31,20 @@ const insert = async (data) => {
   }
 
   const insert = await model.insert(unique);
-  return { palavrasCriadas: unique };
+  return { addedWords: unique };
 };
 
 const remove = async (word) => {
   const inDB = await model.getAll();
   const id = inDB.find((item) => {
-    if (item.word === word) return item.id;
+    if (item.word.toUpperCase() === word.toUpperCase()) return item.id;
   });
 
-  if (!id) return {
+  if (!id || !word) return {
     error: NOT_FOUND,
     message: 'This word doesnt exist on database',
   }
-
-  const removed = await model.remove(id);
+  const removed = await model.remove(id.id);
   return { palavra: word };
 };
 

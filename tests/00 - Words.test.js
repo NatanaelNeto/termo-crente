@@ -118,9 +118,8 @@ describe('TESTS ON words TABLE', () => {
     it('Refuses with an invalid token', async () => {
       const response = await chai
         .request(server)
-        .delete('/words')
-        .set({ authentication: 'token' })
-        .send({ palavra: 'teste' });
+        .delete('/words/teste')
+        .set({ authentication: 'token' });
       
       const { body } = response;
       
@@ -131,9 +130,8 @@ describe('TESTS ON words TABLE', () => {
     it('Refuses when word doesnt exist on database', async () => {
       const response = await chai
         .request(server)
-        .delete('/words')
-        .set({ authentication: token })
-        .send({ palavra: 'aaaaa' });
+        .delete('/words/aaaaa')
+        .set({ authentication: token });
       
       const { body } = response;
 
@@ -146,14 +144,12 @@ describe('TESTS ON words TABLE', () => {
     it('Removes properly', async () => {
       const response = await chai
         .request(server)
-        .delete('/words')
-        .set({ authentication: token })
-        .send({ palavra: 'teste' });
+        .delete('/words/livro')
+        .set({ authentication: token });
       
       const { body } = response;
 
       expect(response).to.status(NO_CONTENT);
-      expect(body.palavra).to.equal('teste');
     });
   });
 });

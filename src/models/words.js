@@ -9,9 +9,9 @@ const getAll = async () => {
 
 const insert = async(data) => {
   const values = data.map((word) => [word]);
-  const results = await connection.execute(
+  const results = await connection.query(
     'INSERT INTO words (word) VALUES ?',
-    values,
+    [values],
   );
   return true;
 }
