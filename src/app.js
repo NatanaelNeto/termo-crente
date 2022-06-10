@@ -14,7 +14,7 @@ const apiRoutes = express.Router();
 // ROTAS
 app.get('/words', words.getAll);
 app.post('/login', admin.login);
-app.post('/admin', tokenValidation, fieldsValidation)
+app.post('/admin', tokenValidation, fieldsValidation, admin.addAdmin);
 
 app.use(apiRoutes);
 
