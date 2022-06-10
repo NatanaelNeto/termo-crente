@@ -14,10 +14,11 @@ const getAll = async () => {
 
 const insert = async (data) => {
   const unique = data.filter((word, index) => data.indexOf(word) === index);
-  const inDB = await model.getAll();
+  let inDB = await model.getAll();
+  inDB = inDB.map((item) => item.word);
   const duplicata = [];
   unique.forEach((word) => inDB.find((w) => {
-    if (word === w) {
+    if (word.toUpperCase() === w.toUpperCase()) {
       duplicata.push(word);
       unique.splice(unique.indexOf(word), 1);
     }
@@ -25,14 +26,15 @@ const insert = async (data) => {
 
   if (unique.length === 0) return {
     error: CONFLICT,
-    message: 'Some words werent added',
+    message: 'All words are already registered',
     words: duplicata,
   }
 
   const insert = await model.insert(unique);
-  return true;
+  return { palavrasCriadas: unique };
 };
 
 module.exports = {
   getAll,
+  insert,
 };

@@ -29,6 +29,11 @@ const tokenValidation = async (req, res, next) => {
 
 const wordSizeValidation = async (req, res, next) => {
   const { palavras } = req.body;
+  if (!palavras) return res.status(BAD_REQUEST).json({
+    error: BAD_REQUEST,
+    message: 'Some required fields are missing',
+  });
+
   const incorrect = palavras.filter((word) => word.length != 5);
   if(incorrect.length > 0) return res.status(BAD_REQUEST).json({
     error: BAD_REQUEST,

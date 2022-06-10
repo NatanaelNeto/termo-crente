@@ -4,7 +4,7 @@ const sinon = require('sinon');
 
 const server = require('../src/app');
 const model = require('../src/models/words');
-const { OK, UNAUTHORIZED, BAD_REQUEST, CREATED } = require('../utils/statusCode');
+const { OK, UNAUTHORIZED, BAD_REQUEST, CREATED, CONFLICT } = require('../utils/statusCode');
 
 chai.use(chaiHttp);
 
@@ -84,8 +84,8 @@ describe('TESTS ON words TABLE', () => {
       .send({ palavras: ['livro'] });
       
       const { body } = response;
-      expect(response).to.be.status(BAD_REQUEST);
-      expect(body.message).to.equal('Some words werent added');
+      expect(response).to.be.status(CONFLICT);
+      expect(body.message).to.equal('All words are already registered');
       expect(body.words).to.contain('livro');
     });
     
