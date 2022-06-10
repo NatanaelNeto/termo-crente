@@ -25,10 +25,22 @@ const tokenValidation = async (req, res, next) => {
       message: 'Token must be a valid token',
     });
   }
+};
 
+const wordSizeValidation = async (req, res, next) => {
+  const { palavras } = req.body;
+  const incorrect = palavras.filter((word) => word.length != 5);
+  if(incorrect.length > 0) return res.status(BAD_REQUEST).json({
+    error: BAD_REQUEST,
+    message: 'Some words werent added',
+    words: incorrect,
+  });
+
+  next();
 };
 
 module.exports = {
   fieldsValidation,
   tokenValidation,
+  wordSizeValidation,
 };
