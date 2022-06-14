@@ -2,6 +2,7 @@ const fs = require('fs');
 const { marked } = require('marked');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const words = require('./controllers/words');
 const admin = require('./controllers/admin');
 const { tokenValidation, fieldsValidation, wordSizeValidation } = require('../utils/middlewares');
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 const apiRoutes = express.Router();
 
